@@ -1,0 +1,1075 @@
+
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Head</title>
+  <style media="screen" type="text/css">
+
+    body
+    {
+      color: #000000;
+      background-color: #FFFFFF;
+    }
+
+    /* Link formats: use maroon w/underlines */
+    a:link
+    {
+      color: navy;
+      text-decoration: underline;
+    }
+    a:visited
+    {
+      color: maroon;
+      text-decoration: underline;
+    }
+    a:active
+    {
+      color: navy;
+      text-decoration: underline;
+    }
+
+    /*** TD formats ***/
+    td
+    {
+      font-family: sans-serif;
+    }
+    td.title
+    {
+      text-align: center;
+      padding-bottom: 10px;
+      font-size: 20pt;
+      font-weight: bold;
+    }
+
+    /* TD Header Information */
+    td.headerName
+    {
+      text-align: right;
+      color: black;
+      padding-right: 6px;
+      font-weight: bold;
+      vertical-align: top;
+      white-space: nowrap;
+    }
+    td.headerValue
+    {
+      text-align: left;
+      color: blue;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+    td.headerTableEntry
+    {
+      text-align: right;
+      color: black;
+      font-weight: bold;
+      white-space: nowrap;
+      padding-left: 12px;
+      padding-right: 4px;
+      background-color: LightBlue;
+    }
+    td.headerValueLeg
+    {
+      text-align: left;
+      color: black;
+      font-size: 80%;
+      white-space: nowrap;
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 2px;
+    }
+
+    /* Color of horizontal ruler */
+    td.hr
+    {
+      background-color: navy;
+      height:3px;
+    }
+    /* Footer format */
+    td.footer
+    {
+      text-align: center;
+      padding-top: 3px;
+      font-family: sans-serif;
+    }
+
+    /* Coverage Table */
+
+    td.coverTableHead
+    {
+      text-align: center;
+      color: white;
+      background-color: SteelBlue;
+      font-family: sans-serif;
+      font-size: 120%;
+      white-space: nowrap;
+      padding-left: 4px;
+      padding-right: 4px;
+    }
+    td.coverFile
+    {
+      text-align: left;
+      padding-left: 10px;
+      padding-right: 20px;
+      color: black;
+      background-color: LightBlue;
+      font-family: monospace;
+      font-weight: bold;
+      font-size: 110%;
+    }
+    td.coverBar
+    {
+      padding-left: 10px;
+      padding-right: 10px;
+      background-color: LightBlue;
+    }
+    td.coverBarOutline
+    {
+      background-color: white;
+    }
+    td.coverValue
+    {
+      padding-top: 2px;
+      text-align: right;
+      padding-left: 10px;
+      padding-right: 10px;
+      font-family: sans-serif;
+      white-space: nowrap;
+      font-weight: bold;
+    }
+
+    /* Link Details */
+    a.detail:link
+    {
+      color: #B8D0FF;
+      font-size:80%;
+    }
+    a.detail:visited
+    {
+      color: #B8D0FF;
+      font-size:80%;
+    }
+    a.detail:active
+    {
+      color: #FFFFFF;
+      font-size:80%;
+    }
+
+    .graphcont{
+        color:#000;
+        font-weight:700;
+        float:left
+    }
+
+    .graph{
+        float:left;
+        background-color: white;
+        position:relative;
+        width:280px;
+        padding:0
+    }
+
+    .graph .bar{
+        display:block;
+        position:relative;
+        border:black 1px solid;
+        text-align:center;
+        color:#fff;
+        height:10px;
+        font-family:Arial,Helvetica,sans-serif;
+        font-size:12px;
+        line-height:1.9em
+    }
+
+    .graph .bar span{
+        position:absolute;
+        left:1em
+    }
+
+    td.coveredLine,
+    span.coveredLine
+    {
+        background-color: LightGreen!important;
+    }
+
+    td.uncoveredLine,
+    span.uncoveredLine
+    {
+        background-color: LightPink!important;
+    }
+
+    .linebranch, .linecount
+    {
+        border-right: 1px gray solid;
+        background-color: lightgray;
+    }
+
+    span.takenBranch
+    {
+        color: Green!important;
+        cursor: help;
+    }
+
+    span.notTakenBranch
+    {
+        color: Red!important;
+        cursor: help;
+    }
+
+    .src
+    {
+        padding-left: 12px;
+    }
+
+    .srcHeader,
+    span.takenBranch,
+    span.notTakenBranch
+    {
+        font-family: monospace;
+        font-weight: bold;
+    }
+
+    pre
+    {
+        height : 15px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .lineno
+    {
+        background-color: #EFE383;
+        border-right: 1px solid #BBB15F;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title">GCC Code Coverage Report</td></tr>
+    <tr><td class="hr"></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerName">Directory:</td>
+            <td width="35%" class="headerValue">./</td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerValue" style="text-align:right;">Exec</td>
+            <td width="10%" class="headerValue" style="text-align:right;">Total</td>
+            <td width="15%" class="headerValue" style="text-align:right;">Coverage</td>
+          </tr>
+          <tr>
+            <td class="headerName">Date:</td>
+            <td class="headerValue">2020-05-12 09:19:49</td>
+            <td></td>
+            <td class="headerName">Lines:</td>
+            <td class="headerTableEntry">1476</td>
+            <td class="headerTableEntry">5024</td>
+            <td class="headerTableEntry" style="background-color:LightPink">29.4 %</td>
+          </tr>
+          <tr>
+            <td class="headerName">Legend:</td>
+            <td class="headerValueLeg">
+              <span style="background-color:LightPink">low: &lt; 75.0 %</span>
+              <span style="background-color:#FFFF55">medium: &gt;= 75.0 %</span>
+              <span style="background-color:LightGreen">high: &gt;= 90.0 %</span>
+            </td>
+            <td></td>
+            <td class="headerName">Branches:</td>
+            <td class="headerTableEntry">739</td>
+            <td class="headerTableEntry">4958</td>
+            <td class="headerTableEntry" style="background-color:LightPink">14.9 %</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="hr"></td></tr>
+  </table>
+
+  <center>
+  <table width="80%" cellpadding=1 cellspacing=1 border=0>
+    <tr>
+      <td width="44%"><br></td>
+      <td width="8%"></td>
+      <td width="8%"></td>
+      <td width="8%"></td>
+      <td width="8%"></td>
+      <td width="8%"></td>
+    </tr>
+    <tr>
+      <td class="coverTableHead">File</td>
+      <td class="coverTableHead" colspan=3>Lines</td>
+      <td class="coverTableHead" colspan=2>Branches</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.Libraries_CMSIS_Device_ST_STM32F1xx_Source_Templates_arm_startup_stm32f103xe.s.html">Libraries/CMSIS/Device/ST/STM32F1xx/Source/Templates/arm/startup_stm32f103xe.s</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:28.6%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">28.6&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">4 / 14</td>
+      <td class="CoverValue" style="background-color:LightGray;">-&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightGray;">0 / 0</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.Libraries_CMSIS_Device_ST_STM32F1xx_Source_Templates_system_stm32f1xx.c.html">Libraries/CMSIS/Device/ST/STM32F1xx/Source/Templates/system_stm32f1xx.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:28.6%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">28.6&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">8 / 28</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 10</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.Libraries_CMSIS_Include_core_cm3.h.html">Libraries/CMSIS/Include/core_cm3.h</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:56.8%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">56.8&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">25 / 44</td>
+      <td class="CoverValue" style="background-color:LightPink;">35.7&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">5 / 14</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.Libraries_STM32F1xx_HAL_Driver_Src_stm32f1xx_hal.c.html">Libraries/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:39.0%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">39.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">16 / 41</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 4</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.Libraries_STM32F1xx_HAL_Driver_Src_stm32f1xx_hal_cortex.c.html">Libraries/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:60.0%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">60.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">15 / 25</td>
+      <td class="CoverValue" style="background-color:LightPink;">22.2&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">4 / 18</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.Libraries_STM32F1xx_HAL_Driver_Src_stm32f1xx_hal_dma.c.html">Libraries/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_dma.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 185</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 682</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.Libraries_STM32F1xx_HAL_Driver_Src_stm32f1xx_hal_gpio.c.html">Libraries/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:27.6%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">27.6&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">27 / 98</td>
+      <td class="CoverValue" style="background-color:LightPink;">17.2&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">31 / 180</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.Libraries_STM32F1xx_HAL_Driver_Src_stm32f1xx_hal_rcc.c.html">Libraries/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:32.3%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">32.3&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">70 / 217</td>
+      <td class="CoverValue" style="background-color:LightPink;">17.1&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">56 / 328</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.Libraries_STM32F1xx_HAL_Driver_Src_stm32f1xx_hal_uart.c.html">Libraries/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:4.9%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">4.9&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">27 / 549</td>
+      <td class="CoverValue" style="background-color:LightPink;">1.9&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">8 / 414</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.applications_main.c.html">applications/main.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:18.2%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">18.2&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">2 / 11</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 2</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.drivers_board.c.html">drivers/board.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:100.0%; background-color:green"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightGreen;">100.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightGreen;">44 / 44</td>
+      <td class="CoverValue" style="background-color:LightPink;">50.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">2 / 4</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.drivers_drv_gpio.c.html">drivers/drv_gpio.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:2.4%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">2.4&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">4 / 167</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 140</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.drivers_drv_usart.c.html">drivers/drv_usart.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:61.9%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">61.9&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">91 / 147</td>
+      <td class="CoverValue" style="background-color:LightPink;">35.2&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">19 / 54</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.drivers_stm32f1xx_it.c.html">drivers/stm32f1xx_it.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 3</td>
+      <td class="CoverValue" style="background-color:LightGray;">-&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightGray;">0 / 0</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.kernel-sample-0.1.0_dynmem_sample.c.html">kernel-sample-0.1.0/dynmem_sample.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 13</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 6</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.kernel-sample-0.1.0_event_sample.c.html">kernel-sample-0.1.0/event_sample.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 25</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 6</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.kernel-sample-0.1.0_idlehook_sample.c.html">kernel-sample-0.1.0/idlehook_sample.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 21</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 6</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.kernel-sample-0.1.0_interrupt_sample.c.html">kernel-sample-0.1.0/interrupt_sample.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 14</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 4</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.kernel-sample-0.1.0_mailbox_sample.c.html">kernel-sample-0.1.0/mailbox_sample.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 25</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 16</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.kernel-sample-0.1.0_memp_sample.c.html">kernel-sample-0.1.0/memp_sample.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 20</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 22</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.kernel-sample-0.1.0_msgq_sample.c.html">kernel-sample-0.1.0/msgq_sample.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 38</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 26</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.kernel-sample-0.1.0_mutex_sample.c.html">kernel-sample-0.1.0/mutex_sample.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 24</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 6</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.kernel-sample-0.1.0_priority_inversion.c.html">kernel-sample-0.1.0/priority_inversion.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 34</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 22</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.kernel-sample-0.1.0_producer_consumer.c.html">kernel-sample-0.1.0/producer_consumer.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 41</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 12</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.kernel-sample-0.1.0_scheduler_hook.c.html">kernel-sample-0.1.0/scheduler_hook.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 13</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 4</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.kernel-sample-0.1.0_semaphore_sample.c.html">kernel-sample-0.1.0/semaphore_sample.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 23</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 16</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.kernel-sample-0.1.0_signal_sample.c.html">kernel-sample-0.1.0/signal_sample.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 14</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 4</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.kernel-sample-0.1.0_thread_sample.c.html">kernel-sample-0.1.0/thread_sample.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 14</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 4</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.kernel-sample-0.1.0_timer_sample.c.html">kernel-sample-0.1.0/timer_sample.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 10</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 6</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.kernel-sample-0.1.0_timeslice_sample.c.html">kernel-sample-0.1.0/timeslice_sample.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 14</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 12</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.rt-thread_components_drivers_misc_pin.c.html">rt-thread/components/drivers/misc/pin.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:29.4%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">29.4&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">15 / 51</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 34</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.rt-thread_components_drivers_serial_serial.c.html">rt-thread/components/drivers/serial/serial.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:71.0%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">71.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">120 / 169</td>
+      <td class="CoverValue" style="background-color:LightPink;">37.7&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">61 / 162</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.rt-thread_components_finsh_cmd.c.html">rt-thread/components/finsh/cmd.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 162</td>
+      <td class="CoverValue" style="background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">0 / 90</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.rt-thread_components_finsh_msh.c.html">rt-thread/components/finsh/msh.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:6.8%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">6.8&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">7 / 103</td>
+      <td class="CoverValue" style="background-color:LightPink;">1.5&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">3 / 198</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.rt-thread_components_finsh_msh_cmd.c.html">rt-thread/components/finsh/msh_cmd.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:0.0%; border:white; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">0 / 5</td>
+      <td class="CoverValue" style="background-color:LightGray;">-&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightGray;">0 / 0</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.rt-thread_components_finsh_shell.c.html">rt-thread/components/finsh/shell.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:49.7%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">49.7&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">88 / 177</td>
+      <td class="CoverValue" style="background-color:LightPink;">32.3&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">80 / 248</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.rt-thread_include_rtservice.h.html">rt-thread/include/rtservice.h</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:60.7%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">60.7&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">17 / 28</td>
+      <td class="CoverValue" style="background-color:LightPink;">50.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">4 / 8</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.rt-thread_libcpu_arm_cortex-m3_context_rvds.S.html">rt-thread/libcpu/arm/cortex-m3/context_rvds.S</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:82.9%; background-color:yellow"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:#FFFF55;">82.9&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:#FFFF55;">63 / 76</td>
+      <td class="CoverValue" style="background-color:LightPink;">40.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">4 / 10</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.rt-thread_libcpu_arm_cortex-m3_cpuport.c.html">rt-thread/libcpu/arm/cortex-m3/cpuport.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:16.2%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">16.2&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">16 / 99</td>
+      <td class="CoverValue" style="background-color:LightPink;">3.6&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">2 / 56</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.rt-thread_src_clock.c.html">rt-thread/src/clock.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:64.7%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">64.7&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">11 / 17</td>
+      <td class="CoverValue" style="background-color:LightPink;">50.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">2 / 4</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.rt-thread_src_components.c.html">rt-thread/src/components.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:89.7%; background-color:yellow"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:#FFFF55;">89.7&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:#FFFF55;">35 / 39</td>
+      <td class="CoverValue" style="background-color:#FFFF55;">83.3&nbsp;%</td>
+      <td class="CoverValue" style="background-color:#FFFF55;">5 / 6</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.rt-thread_src_device.c.html">rt-thread/src/device.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:48.8%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">48.8&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">63 / 129</td>
+      <td class="CoverValue" style="background-color:LightPink;">33.3&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">46 / 138</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.rt-thread_src_idle.c.html">rt-thread/src/idle.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:52.8%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">52.8&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">28 / 53</td>
+      <td class="CoverValue" style="background-color:LightPink;">50.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">19 / 38</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.rt-thread_src_ipc.c.html">rt-thread/src/ipc.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:9.8%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">9.8&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">63 / 644</td>
+      <td class="CoverValue" style="background-color:LightPink;">3.8&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">25 / 652</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.rt-thread_src_irq.c.html">rt-thread/src/irq.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:88.9%; background-color:yellow"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:#FFFF55;">88.9&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:#FFFF55;">16 / 18</td>
+      <td class="CoverValue" style="background-color:LightPink;">50.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">2 / 4</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.rt-thread_src_kservice.c.html">rt-thread/src/kservice.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:47.3%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">47.3&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">175 / 370</td>
+      <td class="CoverValue" style="background-color:LightPink;">33.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">176 / 534</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.rt-thread_src_mem.c.html">rt-thread/src/mem.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:58.1%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">58.1&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">104 / 179</td>
+      <td class="CoverValue" style="background-color:LightPink;">41.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">96 / 234</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.rt-thread_src_mempool.c.html">rt-thread/src/mempool.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:17.2%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">17.2&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">20 / 116</td>
+      <td class="CoverValue" style="background-color:LightPink;">9.5&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">8 / 84</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.rt-thread_src_object.c.html">rt-thread/src/object.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:69.0%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">69.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">58 / 84</td>
+      <td class="CoverValue" style="background-color:LightPink;">34.4&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">22 / 64</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.rt-thread_src_scheduler.c.html">rt-thread/src/scheduler.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:89.3%; background-color:yellow"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:#FFFF55;">89.3&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:#FFFF55;">75 / 84</td>
+      <td class="CoverValue" style="background-color:LightPink;">56.3&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">18 / 32</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.rt-thread_src_signal.c.html">rt-thread/src/signal.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:11.9%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">11.9&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">21 / 177</td>
+      <td class="CoverValue" style="background-color:LightPink;">3.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">4 / 132</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" style="background-color:LightSteelBlue"><a href="coverage.rt-thread_src_thread.c.html">rt-thread/src/thread.c</a></td>
+      <td class="coverBar" align="center" style="background-color:LightSteelBlue">
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:51.0%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">51.0&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">100 / 196</td>
+      <td class="CoverValue" style="background-color:LightPink;">21.3&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">23 / 108</td>
+    </tr>
+
+
+    <tr>
+      <td class="coverFile" ><a href="coverage.rt-thread_src_timer.c.html">rt-thread/src/timer.c</a></td>
+      <td class="coverBar" align="center" >
+        <table border=0 cellspacing=0 cellpadding=1><tr><td class="coverBarOutline">
+                <div class="graph"><strong class="bar" style="width:36.4%; background-color:red"></strong></div>
+                </td></tr></table>
+      </td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">36.4&nbsp;%</td>
+      <td class="CoverValue" style="font-weight:bold; background-color:LightPink;">48 / 132</td>
+      <td class="CoverValue" style="background-color:LightPink;">14.0&nbsp;%</td>
+      <td class="CoverValue" style="background-color:LightPink;">14 / 100</td>
+    </tr>
+
+
+    <tr>
+      <td width="44%"><br></td>
+      <td width="8%"></td>
+      <td width="8%"></td>
+      <td width="8%"></td>
+      <td width="8%"></td>
+      <td width="8%"></td>
+    </tr>
+  </table>
+  </center>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="hr"><td></tr>
+    <tr><td class="footer">Generated by: <a href="http://gcovr.com">GCOVR (Version 4.2)</a></td></tr>
+  </table>
+  <br>
+
+</body>
+
+</html>
+
