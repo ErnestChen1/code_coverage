@@ -4,18 +4,18 @@
 
 ## coverage 命令使用
 
-| 语法                            | 描述                                                         | 备注 |
-| ------------------------------- | ------------------------------------------------------------ | ---- |
-| COVERAGE                        | 显示整个应用的信息                                           |      |
-| COVERAGE \module [DETAILS]      | 显示选择的module信息，选项提供额外指令                       |      |
-| COVERAGE \module\func [DETAILS] | 显示在module函数包含函数信息，选项提供额外的执行指令         |      |
-| COVERAGE CLEAR                  | 清除所有测试覆盖的信息                                       |      |
-| COVERAGE FLOW filespec          | 按照规顶打印程序运行信息，仅能模拟使用                       |      |
-| COVERAGE GCOV * [DETAILS]       | 打印各个模块执行信息，生成 module.gcov 文件。选项提供条件指令信息 |      |
-| COVERAGE GCOV module [DETAILS]  | 同上                                                         |      |
-| COVERAGE LOAD path\filename     | 从二进制中加载代码覆盖信息，能将之前的测试片段与当前测试片段合并。值得注意的是应用 image 一定不能改变。 |      |
-| COVERAGE MTB filename           |                                                              |      |
-| COVERAGE SAVE path\filename     | 保存代码覆盖率信息的二进制文件（在写入前，该文件必须存在）。 |      |
+| 语法                            | 描述                                                         |
+| ------------------------------- | ------------------------------------------------------------ |
+| COVERAGE                        | 显示整个应用的信息                                           |
+| COVERAGE \module [DETAILS]      | 显示选择的module信息，选项提供额外指令                       |
+| COVERAGE \module\func [DETAILS] | 显示在module函数包含函数信息，选项提供额外的执行指令         |
+| COVERAGE CLEAR                  | 清除所有测试覆盖的信息                                       |
+| COVERAGE FLOW filespec          | 按照规顶打印程序运行信息，仅能**模拟**使用【生成的文件超级大，rtt 的刚才100G以上】multiple test runs information |
+| COVERAGE GCOV * [DETAILS]       | 打印各个模块执行信息，生成 module.gcov 文件。选项提供条件指令信息 |
+| COVERAGE GCOV module [DETAILS]  | 指定某个文件生成 module.gcov 文件                            |
+| COVERAGE LOAD path\filename     | 从二进制中加载代码覆盖信息，能将之前的测试片段与当前测试片段合并。值得注意的是应用 image 一定不能改变。 |
+| COVERAGE MTB filename           |                                                              |
+| COVERAGE SAVE path\filename     | 保存代码覆盖率信息的二进制文件（在写入前，该文件必须存在）。 |
 
 ## COVERAGE  GCOV 说明
 
@@ -70,5 +70,13 @@ gcovr -v -gk --html --html-details -o report/coverage.html -s
 -o：打印文件名称
 report/coverage.html：指定文件路径
 -s：打印间段报告
+-r:指定源文件目录
+-search_paths：搜寻 .gcov 文件路径
+```
+
+为了指定测试目录与直接提取 coverage 信息，更新命令如下：
+
+```
+gcovr -v -gk --html --html-details -r ../libraries/HAL_Drivers --gcov-ignore-parse-errors -search_paths /build -o report/coverage.html -s
 ```
 
