@@ -70,13 +70,27 @@ gcovr -v -gk --html --html-details -o report/coverage.html -s
 -o：打印文件名称
 report/coverage.html：指定文件路径
 -s：打印间段报告
--r:指定源文件目录
+-r:指定源文件目录，只能指定一个
 -search_paths：搜寻 .gcov 文件路径
+-p：通过百分比排列
+-f：指定源文件，选择包含的
+-e：排除源文件
+
 ```
 
 为了指定测试目录与直接提取 coverage 信息，更新命令如下：
 
 ```
 gcovr -v -gk --html --html-details -r ../libraries/HAL_Drivers --gcov-ignore-parse-errors -search_paths /build -o report/coverage.html -s
+
+# 输出所有的
+gcovr -v -gk --html --html-details -r ../.. --gcov-ignore-parse-errors -o report/coverage.html -s
+
+# 排除过滤文件（bsp 文件夹依然执行）
+gcovr -v -gk --html --html-details -e ../../bsp -r ../.. --gcov-ignore-parse-errors -o report/coverage.html -s -p
+
+# 多次指定源文件
+gcovr -v -gk --html --html-details -r ../.. -f ../../components -f ../../src -f ../../libcpu -f ../../include -o report/coverage.html -s -p
+
 ```
 
